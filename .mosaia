@@ -1,0 +1,44 @@
+{
+    "name": "Google Sheets Writer",
+    "description": "Writes a summary or data to a specified Google Sheet using the Google Sheets API.",
+    "schema": {
+        "type": "function",
+        "function": {
+            "name": "Google Sheets Write",
+            "description": "Writes a summary or data to a specified Google Sheet and range.",
+            "strict": true,
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "sheet_id": {
+                        "type": "string",
+                        "description": "The ID of the Google Sheet to write to."
+                    },
+                    "range": {
+                        "type": "string",
+                        "description": "The A1 notation of the range to write to (e.g., 'Sheet1!A1')."
+                    },
+                    "summary": {
+                        "type": "string",
+                        "description": "The summary or data to write into the sheet."
+                    }
+                },
+                "required": [
+                    "sheet_id",
+                    "range",
+                    "summary"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "envVars": [
+        "GOOGLE_SERVICE_ACCOUNT_KEY"
+    ],
+    "server": {
+        "startCommand": "npm run start:dev",
+        "port": 3000,
+        "endpoint": "/write",
+        "method": "POST"
+    }
+}
